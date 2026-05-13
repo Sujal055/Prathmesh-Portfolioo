@@ -1024,4 +1024,17 @@
         setTimeout(() => {
           entry.target.classList.add('visible');
         }, 80);
- 
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Stagger children in same section
+  document.querySelectorAll('.exp-item, .project-card, .skill-group, .ach-card').forEach((el, i) => {
+    el.style.transitionDelay = (i % 4) * 80 + 'ms';
+  });
+</script>
+</body>
+</html>
